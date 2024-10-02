@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Apostas</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+
+
+    <h1>Calculadora Dutching</h1>
+    <div class="input-group">
+        <label for="investimento">Investimento:</label>
+        <input type="text" id="investimento" value="0" oninput="formatInvestimento(this)">
+        <button onclick="reiniciarCalculadora()">Reiniciar Calculadora</button>
+    </div>
+
+    <div class="result" id="lucro"></div>
+    <div class="result" id="retorno"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Odds</th>
+                <th>Investimento</th>
+                <th>Retorno</th>
+            </tr>
+        </thead>
+        <tbody id="oddsTable">
+            <tr>
+                <td><span class="odd-number">1°</span> <input type="text" class="odd" step="0.01"></td>
+                <td class="investimento"></td>
+                <td class="retorno"></td>
+            </tr>
+            <tr>
+                <td><span class="odd-number">2°</span> <input type="text" class="odd" step="0.01"></td>
+                <td class="investimento"></td>
+                <td class="retorno"></td>
+            </tr>
+            <!-- Odds de 1 a 4 já adicionadas -->
+            <tr>
+                <td><span class="odd-number">3°</span> <input type="text" class="odd" step="0.01"></td>
+                <td class="investimento"></td>
+                <td class="retorno"></td>
+            </tr>
+            <!-- Repita para as demais até a 4ª odd -->
+            <tr>
+                <td><span class="odd-number">4°</span> <input type="text" class="odd" step="0.01"></td>
+                <td class="investimento"></td>
+                <td class="retorno"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <button onclick="adicionarOdd()">Adicionar Mais Odds</button>
+    <button onclick="reiniciarCalculadora()">Reiniciar Calculadora</button>
+
+    <div class="orientation"></div>
+    <h2>Informações</h2>
+    <div class="legend">
+        <h3>Para reiniciar os campos das odds basta atualizar a página.</h>
+        <h3>Legenda:</h3>
+        <p><strong>Investimento:</strong> valor total a distribuir nas apostas.</p>
+        <p><strong>Lucro:</strong> cálculo retorno do investimento total subtraído do valor da aposta.</p>
+        <p><strong>Retorno:</strong> ganhos se qualquer uma das apostas for vencedora.</p>
+    </div>
+    <div class="explanation"></div>
+        <h3>O que é Dutching:</h3>
+        <p>Dutching é o compartilhamento do risco entre várias apostas. É preciso calcular a aposta correta a ser colocada em cada seleção, para que o retorno seja o mesmo se alguma delas for vencedora.</p>
+    </div>
+    <div class="odd-explanation">
+        <h3>O que é ODD:</h3>
+        <p>ODD é o valor pago no evento em que você apostou.</p>
+        <p>Quanto maior a probabilidade de um resultado acontecer, menor será o preço que as bookies irão te pagar e consequentemente o retorno será baixo também. Assim como, quanto menos provável o resultado, maior será a odd do evento.</p>
+        <p>Você deve ter percebido que essa matemática é difícil de ser batida, sabe porque? O motivo é que as pessoas, muitas vezes, apostam em resultados óbvios e não consideram fatores externos.</p>
+        <p>Portanto, uma dica é apostar em odds desajustadas, erradas ou desequilibradas, pois assim você terá mais chance de ser lucrativo mantendo essa estratégia a longo prazo.</p>
+        <br>
+
+        <h3>No Dutching</h3>
+        <p>A estratégia consiste em distribuir seu investimento em múltiplas apostas, de forma que o retorno seja o mesmo independentemente do resultado vencedor. Vamos usar o exemplo: Palmeiras vs Flamengo, no mercado de Vitória Combinada com Mais de 1,5 Gols.</p>
+
+        <h3>Cenário 1: Mercado "Vitória Combinada com Mais de 1,5 Gols"</h3>
+        <p>Aqui, você apostaria nas seguintes combinações:
+            Palmeiras vence e mais de 1,5 gols.
+        <br>
+            Flamengo vence e mais de 1,5 gols.</p>
+
+        <h3>Odds no mercado (valores fictícios):</h3>
+        <p>Palmeiras vence + Mais de 1,5 gols: Odd 2.20
+        <br>
+            Flamengo vence + Mais de 1,5 gols: Odd 2.50
+        </p>
+        <h3>Investimento total: R$ 100,00</h3>
+    
+        <p>Agora, usando a Calculadora de Dutching, vamos distribuir o investimento de modo a garantir que o retorno seja o mesmo independentemente de qual time vença (desde que haja mais de 1,5 gols).
+
+        </p>
+        <h3>Cálculo de Investimento em cada odd:</h3>
+        
+        <p>Palmeiras vence + Mais de 1,5 gols (Odd 2.20):
+            Investimento = (Total Investido / Odd de Palmeiras)
+            Investimento = 100 / 2.20 = R$ 45,45.
+        <br>
+            Flamengo vence + Mais de 1,5 gols (Odd 2.50):
+            Investimento = (Total Investido / Odd de Flamengo)
+            Investimento = 100 / 2.50 = R$ 40,00.
+        </p>
+        <h3>Retorno em cada cenário:</h3> 
+        <p>
+            Se qualquer uma das apostas for vencedora:
+            
+            Palmeiras vence + Mais de 1,5 gols:
+            Retorno = R$ 45,45 * 2.20 = R$ 100,00.
+        <br>
+            Flamengo vence + Mais de 1,5 gols:
+            Retorno = R$ 40,00 * 2.50 = R$ 100,00.
+        </p>
+        <h3>Lucro em ambos os casos:</h3>
+        <p>
+            Lucro = Retorno Total - Investimento Total = R$ 100,00 - R$ 85,45 = R$ 14,55
+            Explicação.
+        <br>
+            Com essas apostas, você garantiu que, independentemente de qual time vença, desde que haja mais de 1,5 gols, o retorno será o mesmo (R$ 100,00) e seu lucro será de R$ 14,55 sobre o investimento total de R$ 85,45.
+            
+            Essa é a lógica por trás do Dutching, que distribui as apostas de forma que o retorno líquido seja igual, independente do resultado.
+        </p>
+
+        <button><h2>Ajude a manter o projeto vivo, Obrigado!</h2></button>
+        <br>
+            
+            <h3>Chave Pix Banco: Nubank - Alex Barroso Paz</h3>
+<p id="pix">ac849e24-8eca-458f-958d-5c3962d8701d <button onclick="copyToClipboard('pix')">Copiar</button></p>
+
+<h3>Carteira de CriptoMoeda</h3>
+<p id="crypto">0x4675C9Af826a658307b51eec460cBbfefa50Fea7 <button onclick="copyToClipboard('crypto')">Copiar</button></p>
+
+<h3>PicPay - Alex Barroso Paz</h3>
+<p id="picpay">@alex.bpz <button onclick="copyToClipboard('picpay')">Copiar</button></p>
+<br>
+<p>Você pode contatar o autor em wallezpaz@gmail.com.
+    Se encontrar qualquer bug, por favor contate o administrador do site.</p>
+     
+        <br>
+        
+            <footer>
+                &copy; 2024 Projeto desenvolvido por Dev.Alex Barroso Paz. Todos os direitos reservados.
+            </footer>
+        
+            <script src="scripts.js"></script>
+
+          
+</body>
+</html>
