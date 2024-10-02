@@ -20,7 +20,7 @@ Este é um projeto de **Calculadora Dutching** desenvolvida em HTML, CSS e JavaS
 
 1. Clone ou baixe o repositório:
     ```bash
-    git clone https://github.com/finntroll89/CalculadoraDutching
+    git clone https://github.com/finntroll89/CalculadoraAPP
     ```
 2. Abra o arquivo `index.html` em um navegador web.
 
